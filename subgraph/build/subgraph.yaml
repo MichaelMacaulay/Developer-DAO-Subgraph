@@ -1,0 +1,71 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: nft
+    network: mainnet
+    source:
+      address: "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b"
+      abi: nft
+      startBlock: 13153967
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: nft
+          file: nft/abis/nft.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: nft/nft.wasm
+  - kind: ethereum
+    name: Contract
+    network: mainnet
+    source:
+      address: "0xb24cd494faE4C180A89975F1328Eab2a7D5d8f11"
+      abi: Contract
+      startBlock: 15390081
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DelegateChanged
+        - DelegateVotesChanged
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Sweep20
+        - Sweep721
+      abis:
+        - name: Contract
+          file: Contract/abis/Contract.json
+      eventHandlers:
+        - event: DelegateChanged(indexed address,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: DelegateVotesChanged(indexed address,uint256,uint256)
+          handler: handleDelegateVotesChanged
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Sweep20(address,address)
+          handler: handleSweep20
+        - event: Sweep721(address,address,uint256)
+          handler: handleSweep721
+      file: Contract/Contract.wasm
