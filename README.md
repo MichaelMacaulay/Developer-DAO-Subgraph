@@ -1,6 +1,6 @@
-This is a sample subgraph for Developer DAO's $CODE token and initial NFT project.
+This is a subgraph for Developer DAO. The subgraph indexes data from
 
-This subgraph:
-https://thegraph.com/studio/subgraph/developer-dao-subgraph/
+- $CODE token
+- initial NFT project
 
-v0.0.8
+You can fork the subgraph from this repo or make queries to it [here](https://testnet.thegraph.com/explorer/subgraphs/ENGf723fFnyTCxyQb44MwYqxQiUGqh5EQyC6QfGJLj9x?view=Overview&chain=goerli).
