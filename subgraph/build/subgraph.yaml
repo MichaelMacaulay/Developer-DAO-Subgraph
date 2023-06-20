@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: nft
@@ -20,7 +20,7 @@ dataSources:
         - Transfer
       abis:
         - name: nft
-          file: ./abis/nft.json
+          file: nft/abis/nft.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
@@ -30,7 +30,7 @@ dataSources:
           handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/nft.ts
+      file: nft/nft.wasm
   - kind: ethereum
     name: Contract
     network: mainnet
@@ -52,7 +52,7 @@ dataSources:
         - Sweep721
       abis:
         - name: Contract
-          file: ./abis/Contract.json
+          file: Contract/abis/Contract.json
       eventHandlers:
         - event: DelegateChanged(indexed address,indexed address,indexed address)
           handler: handleDelegateChanged
@@ -68,4 +68,4 @@ dataSources:
           handler: handleSweep20
         - event: Sweep721(address,address,uint256)
           handler: handleSweep721
-      file: ./src/contract.ts
+      file: Contract/Contract.wasm
