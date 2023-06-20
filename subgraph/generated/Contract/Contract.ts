@@ -240,7 +240,7 @@ export class Transfer__Params {
   }
 }
 
-export class code__checkpointsResultValue0Struct extends ethereum.Tuple {
+export class Contract__checkpointsResultValue0Struct extends ethereum.Tuple {
   get fromBlock(): BigInt {
     return this[0].toBigInt();
   }
@@ -250,9 +250,9 @@ export class code__checkpointsResultValue0Struct extends ethereum.Tuple {
   }
 }
 
-export class code extends ethereum.SmartContract {
-  static bind(address: Address): code {
-    return new code("code", address);
+export class Contract extends ethereum.SmartContract {
+  static bind(address: Address): Contract {
+    return new Contract("Contract", address);
   }
 
   DEFAULT_ADMIN_ROLE(): Bytes {
@@ -416,7 +416,7 @@ export class code extends ethereum.SmartContract {
   checkpoints(
     account: Address,
     pos: BigInt
-  ): code__checkpointsResultValue0Struct {
+  ): Contract__checkpointsResultValue0Struct {
     let result = super.call(
       "checkpoints",
       "checkpoints(address,uint32):((uint32,uint224))",
@@ -426,13 +426,15 @@ export class code extends ethereum.SmartContract {
       ]
     );
 
-    return changetype<code__checkpointsResultValue0Struct>(result[0].toTuple());
+    return changetype<Contract__checkpointsResultValue0Struct>(
+      result[0].toTuple()
+    );
   }
 
   try_checkpoints(
     account: Address,
     pos: BigInt
-  ): ethereum.CallResult<code__checkpointsResultValue0Struct> {
+  ): ethereum.CallResult<Contract__checkpointsResultValue0Struct> {
     let result = super.tryCall(
       "checkpoints",
       "checkpoints(address,uint32):((uint32,uint224))",
@@ -446,7 +448,7 @@ export class code extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      changetype<code__checkpointsResultValue0Struct>(value[0].toTuple())
+      changetype<Contract__checkpointsResultValue0Struct>(value[0].toTuple())
     );
   }
 
