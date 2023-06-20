@@ -5,7 +5,8 @@
       "startBlock": 15390081
     },
     "nft": {
-      "address": "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b"
+      "address": "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b",
+      "startBlock": 13153967
     }
   }
 }
